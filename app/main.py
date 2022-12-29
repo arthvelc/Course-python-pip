@@ -1,15 +1,28 @@
 import utils
 import read_csv
 import charts
+import pandas
 
 def run():
-  data = read_csv.read_csv('/home/artur/python/course_python_pip/app/data.csv')
+
+
+  '''data = read_csv.read_csv('/home/artur/python/course_python_pip/app/data.csv')
   #data = list(filter(lambda item : item['Continent'] == 'South America',data))
 
   countries = list(map(lambda x: x['Country/Territory'], data))
   percentages = list(map(lambda x: x['World Population Percentage'], data))
+
+  '''
+  df =pandas.read_csv('data.csv')
+#solo si quiero filtrar datos en pandas :D
+  df=df[df['Continent']=='North America']
+
+  #Vamos a obtener los paises y porcentajes
+  countries= df['Country'].values
+  percentages= df['World Population Percentage'].values
   charts.generate_pie_chart(countries, percentages)
-  
+
+  data=read_csv.read_csv('data.csv')
   country = input('Selecciona Pais: ')
   print(country)
 
