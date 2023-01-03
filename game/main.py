@@ -2,32 +2,25 @@
 #vamos a empezar a programar de verdad 
 #jaja rompí el código, pero luego lo arreglo, mientras este código servirá para fines prácticos 20/dic/2022.
 #Ya estructuré  mejor el programa modularizando procesos en el algoritmo :D  29/12/22
-import random
-import os
+#Me encanta prpogramar, incorporé el bucle while en la funcioón game y corregí el contador de resultados y puse algunos manejos de error, voy a continuar mejorando ya que talta poner un límite en las opciones:D 2/01/2023
+
 import showscreen as show
 import game_rules as game
 
-def clear():
-    os.system('clear')
-count=1
-clear()
+
 def run():
+    show.clear()
     show.game_instructions()
-    clear()
+    show.clear()
     rounds= show.num_partidas() 
-    clear()
+    show.clear()
     show.star_game()
-    count=1
-    while count<=rounds:
-        show.rounds_count(count)
-        victorias, derrotas, empates = game.game()
-        show.pause()
-        clear()
-        count+=1
+    victorias, derrotas,  empates = game.game(count=1, rounds=rounds)
     show.contador_resultados(victorias, derrotas, empates, rounds)
     show.pause()
-    clear()
+    show.clear()
     show.end()
+
 
 if __name__== '__main__':
     run()

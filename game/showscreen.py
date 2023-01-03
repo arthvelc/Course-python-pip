@@ -1,3 +1,5 @@
+import os 
+
 def game_instructions():
     print("""\tInstrucciones del juego
     selecciona la opción con la cual vas a atacar :
@@ -9,13 +11,22 @@ def game_instructions():
     input('¡Listo! presiona ---ENTER--- para comenzar 😎 ')
 
 def num_partidas(): 
-    rounds = int(input("¿Cuántas partidas quieres jugar? "))
-    return rounds
+    while True:
+        try:
+            rounds = int(input("¿Cuántas partidas quieres jugar? "))
+        except NameError:
+            print("Digita el número de rounds con un numero entero positivo")
+        except ValueError:
+            print("Digita el numero con un entero positivo")
+        else:
+            False
+            return rounds
+            
 
 def star_game():
     print(""""¡¡¡¡¡¡¡¡¡¡COMIENZA EL JUEGO!!!!!!!!!!!!!!""")
 
-def rounds_count(numero_partidas):
+def rounds_count(numero_partidas=1):
     print(f"""*************
 ROUND {numero_partidas}
 *************""")
@@ -34,6 +45,9 @@ El número de empates fue de: {empates}""")
 
 def end():
     print("Gracias por haber jugado el mítico juego de piedra papel o tijeras")
+
+def clear():
+    os.system('clear')
 
 
 
